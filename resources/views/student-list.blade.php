@@ -40,6 +40,7 @@
   </tr>
 
   @if($students)
+
   @foreach($students as $student)
   <tr>
     <td>{{ $student->id }}</td>
@@ -56,14 +57,35 @@
 
     <td>
       <a href="/student/{{$student->id}}">View</a>
+
+
+
       <a href="/student/update/{{$student->id}}">Edit</a>
-      <a href="/student/remove/{{$student->id}}">Delete</a>
+
+
+
+      <a onClick="confirmDelete(this.id)" id="{{$student->id}}" href="javascript:void(0)">Delete</a>
+
+
     </td>
   </tr>
   @endforeach
+
   @else
   <tr colspan="5">
     <td>No students record found</td>
   </tr>
   @endif
 </table>
+
+
+<script>
+  function confirmDelete(id) {
+
+    let del = confirm();
+
+    if (del) {
+      window.location.href = '/student/remove/' + id
+    }
+  }
+</script>

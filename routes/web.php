@@ -53,8 +53,30 @@ Route::post('/random', 'CounterController@random');
  */
 Route::get('/student/create', 'StudentController@index');
 Route::post('/student/create', 'StudentController@create');
+
 Route::get('/student-list', 'StudentController@list');
 Route::get('/student/{id}', 'StudentController@view');
+
+
 Route::get('/student/update/{id}', 'StudentController@edit');
+
+
+
+
+
 Route::post('/student/update', 'StudentController@update');
+
+
+
+
+
+
+
+
+
+
 Route::get('/student/remove/{id}', 'StudentController@remove');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -24,14 +24,6 @@ class StudentController extends Controller
 
     public function create(Request $request)
     {
-        // $student = new Student;
-        // $student->name = $request->name;
-        // $student->email = $request->email;
-        // $student->phone = $request->phoneNumber;
-        // $student->status = 1;
-
-        // $student->save();
-
         $this->validator($request->all())->validate();
 
         Student::create([
@@ -46,7 +38,7 @@ class StudentController extends Controller
 
     public function list()
     {
-        $studentList = Student::all();
+        $studentList = Student::where('status', 1)->get();
 
         return view('student-list')->with('students', $studentList);
     }
@@ -58,12 +50,28 @@ class StudentController extends Controller
         return view('student-view')->with('student', $student);
     }
 
+
+
+
+
+
+
     public function edit($id)
     {
         $student = Student::find($id);
 
         return view('student-update')->with('student', $student);
     }
+
+
+
+
+
+
+
+
+
+
 
     public function update(Request $request)
     {
@@ -83,9 +91,11 @@ class StudentController extends Controller
     public function remove($id)
     {
         $student = Student::find($id);
+     
         $student->status = 0;
+        
         $student->save();
-
+        
         return redirect('/student-list');
     }
 }
