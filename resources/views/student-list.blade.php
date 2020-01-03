@@ -36,6 +36,7 @@
     <th>Email Address</th>
     <th>Phone Number</th>
     <th>Status</th>
+    <th>Faculty</th>
     <th>Action</th>
   </tr>
 
@@ -54,19 +55,11 @@
       <span>Deleted</span>
       @endif
     </td>
-
+    <td>{{$student->faculty->name}}</th>
     <td>
       <a href="/student/{{$student->id}}">View</a>
-
-
-
       <a href="/student/update/{{$student->id}}">Edit</a>
-
-
-
       <a onClick="confirmDelete(this.id)" id="{{$student->id}}" href="javascript:void(0)">Delete</a>
-
-
     </td>
   </tr>
   @endforeach
@@ -81,7 +74,6 @@
 
 <script>
   function confirmDelete(id) {
-
     let del = confirm();
 
     if (del) {

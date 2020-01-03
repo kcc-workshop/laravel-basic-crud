@@ -20,7 +20,7 @@
   </a>
 </div>
 
-<form method="post" action="/student/update">
+<form method="post" action="/student/create">
   @csrf
   <div>
     <label for="name">Name</label>
@@ -45,6 +45,23 @@
   <div>
     <label for="phone">Phone Number</label>
     <input type="text" placeholder="Phone Number" id="phone" name="phone" value="{{ old('phone') }}">
+    @if ($errors->has('phone'))
+    <span class="invalid-feedback">
+      <strong>{{ $errors->first('phone') }}</strong>
+    </span>
+    @endif
+  </div>
+
+  <div>
+    <label for="faculty">Faculty</label>
+    <select name="faculty" id="faculty">
+      <option value="">Select faculty</option>
+      @if($faculties)
+      @foreach($faculties as $faculty)
+      <option value="{{$faculty->id}}">{{$faculty->name}}</option>
+      @endforeach
+      @endif
+    </select>
     @if ($errors->has('phone'))
     <span class="invalid-feedback">
       <strong>{{ $errors->first('phone') }}</strong>

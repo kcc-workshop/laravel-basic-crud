@@ -32,9 +32,6 @@
   }
 </style>
 <div class="container">
-
-
-
   <h1>Random Number</h1>
 
   <form method="post" action="/random">

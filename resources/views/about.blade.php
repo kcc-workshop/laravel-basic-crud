@@ -84,7 +84,8 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Dynamic data
+                {{ $myTitle }}
+                <?php echo $myTitle; ?>
             </div>
 
             <div class="links">

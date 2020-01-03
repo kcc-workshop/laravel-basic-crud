@@ -11,6 +11,10 @@ class CounterController extends Controller
         return view('counter')->with('count', 0);
     }
 
+
+
+
+
     public function increase($count)
     {
         $count++;
@@ -36,15 +40,12 @@ class CounterController extends Controller
 
 
 
-    
     public function random(Request $request)
     {
         $min = $request->from;
         $max = $request->to;
         $randomNumber = rand($min, $max);
        
-      
-
         return view('random')->with('randomNumber', $randomNumber);
     }
 }

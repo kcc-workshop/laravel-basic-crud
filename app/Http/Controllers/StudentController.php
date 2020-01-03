@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Faculty;
 use App\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,7 +11,9 @@ class StudentController extends Controller
 {
     public function index()
     {
-        return view('student-form');
+        $faculties = Faculty::get();
+
+        return view('student-form')->with('faculties', $faculties);
     }
 
     public function validator($student)
@@ -30,6 +33,7 @@ class StudentController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'faculty_id' => $request->faculty,
             'status' => 1
         ]);
 
@@ -50,28 +54,12 @@ class StudentController extends Controller
         return view('student-view')->with('student', $student);
     }
 
-
-
-
-
-
-
     public function edit($id)
     {
         $student = Student::find($id);
 
         return view('student-update')->with('student', $student);
     }
-
-
-
-
-
-
-
-
-
-
 
     public function update(Request $request)
     {
